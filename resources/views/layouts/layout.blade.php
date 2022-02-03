@@ -232,7 +232,8 @@
         jQuery('#country').change(function(){
             let cid = jQuery(this).val();
             jQuery.ajax({
-                url: '/houserent/getdivision',
+                //url: '/houserent/getdivision', 
+                url: "{{url('getdivision')}}", 
                 type: 'post',
                 data: 'cid='+cid+'&_token={{csrf_token()}}',
                 success: function(result){
@@ -244,7 +245,7 @@
         jQuery('#state').change(function(){
             let sid = jQuery(this).val();
             jQuery.ajax({
-                url: '/houserent/getdistrict',
+                url: "{{url('getdistrict')}}",
                 type: 'post',
                 data: 'sid='+sid+'&_token={{csrf_token()}}',
                 success: function(result){
@@ -256,7 +257,7 @@
         jQuery('#district').change(function(){
             let dist = jQuery(this).val();
             jQuery.ajax({
-                url: '/houserent/getthana',
+                url: "{{url('getthana')}}",
                 type: 'post',
                 data: 'dist='+dist+'&_token={{csrf_token()}}',
                 success: function(result){
@@ -268,7 +269,7 @@
         jQuery('#thana').change(function(){
             let tna = jQuery(this).val();
             jQuery.ajax({
-                url: '/houserent/getunion',
+                url: "{{url('getunion')}}",
                 type: 'post',
                 data: 'tna='+tna+'&_token={{csrf_token()}}',
                 success: function(result){
