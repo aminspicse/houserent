@@ -2,157 +2,263 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel = "icon" href ="{{asset('public/icon/icon.jpg')}}" type = "image/x-icon">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <title>
         @yield('title'):
         {{ config('app.name', 'HRentSolution') }}
     </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
- <!-- Bootstrap -->
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <!-- Bootstrap -->
-    <link href="{{ asset('public/admin/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="{{ asset('public/admin/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="{{ asset('public/admin/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="{{ asset('public/admin/img/favicon.png')}}" rel="icon">
+    <link href="{{ asset('public/admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-    <!-- iCheck -->
-    <link href="{{ asset('public/admin/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
-
-    <!-- Datatables -->
-    
-    <link href="{{ asset('public/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
-    
-    <!-- bootstrap-progressbar -->
-    <link href="{{ asset('public/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}"
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="{{ asset('public/admin/vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet" />
-    <!-- bootstrap-daterangepicker -->
-    <link href="{{ asset('public/admin/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-    <!-- jQuery custom content scroller -->
-    <link href="{{ asset('public/admin/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')}}" rel="stylesheet" />
 
-    
-    <!-- Custom Theme Style -->
-    <link href="{{ asset('public/admin/build/css/custom.css')}}" rel="stylesheet">
-    
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('public/admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/admin/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/admin/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/admin/vendor/quill/quill.snow.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/admin/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/admin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('public/admin/css/style.css')}}" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: NiceAdmin - v2.2.1
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body class="nav-md" >
-    <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col menu_fixed">
-                <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href=" " class="site_title">
-                            <span>{{config('app.name')}}</span></a>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    <br />
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
 
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            @if(Auth::user()->role_id == 1)
-                                <!-- Admin Option -->
-                                <h3>Admin</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="{{url('/admin/dashboard')}}">Dashboard</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-database"></i> Master Data <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="{{url('/admin/country')}}">Country</a></li>
-                                            <li><a href="{{url('/admin/division')}}">Division</a></li>
-                                            <li><a href="{{url('/admin/district')}}">District</a></li>
-                                            <li><a href="{{url('/admin/upazila')}}">Upazila</a></li>
-                                            <li><a href="{{url('/admin/union')}}">Union</a></li>
-                                            <li><a href="{{url('/admin/property-type')}}">Property Type</a></li>
-                                            <li><a href="{{url('/admin/property-for')}}">Property For</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-edit"></i> Manage Post <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="{{url('/admin/pending-post')}}">Pending Post</a></li>
-                                            <li><a href="{{url('/admin/active-post')}}">Active Post</a></li>
-                                            <li><a href="{{url('/admin/inactive-post')}}">Inactive Post</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-home"></i> Posts <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="{{url('post/create')}}">Create Post</a></li>
-                                            <li><a href="{{url('post/')}}">My Post</a></li>
-                                        </ul>
-                                    </li>
-                                    
-                                    
-                                </ul>
-                            @elseif(Auth::user()->role_id == 2)
-                                <!-- Agent Option -->
-                                <h3>Agent</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-home"></i> Post <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="{{url('/post/create')}}">Create Post</a></li>
-                                            <li><a href="{{url('post/')}}">My Post</a></li>
-                                        </ul>
-                                    </li>
-                                    
-                                </ul>
-                            @elseif(Auth::user()->role_id == 3)
-                                <!-- User Option -->
-                                <h3>User</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-home"></i> Posts <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="{{url('/post/create')}}">Create Post</a></li>
-                                            <li><a href="{{url('post/')}}">My Post</a></li>
-                                        </ul>
-                                    </li>
-                                    
-                                </ul>
-                            @endif
-                        </div>
-                    </div>
-                    <!-- /sidebar menu -->
-                </div>
-            </div>
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">{{config('app.name')}}</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
 
-            <!-- top navigation -->
-            <div class="top_nav fixed-top">
-                <div class="nav_menu">
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <nav class="nav navbar-nav">
-                        <ul class=" navbar-right">
-                            <li class="nav-item dropdown open" style="padding-left: 15px;">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{url('public/storage/image'.Auth::user()->picture)}}" alt="">{{Auth::user()->name}}
-                                </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right"
-                                    aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{url('/profile')}}"> Profile</a>
-                                    <a class="dropdown-item" href="{{url('/activity')}}">
-                                        <span class="badge bg-red pull-right"></span>
-                                        <span>Activity</span>
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End Search Bar -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li><!-- End Search Icon-->
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        <span class="badge bg-primary badge-number">4</span>
+                    </a><!-- End Notification Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header">
+                            You have 4 new notifications
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-exclamation-circle text-warning"></i>
+                            <div>
+                                <h4>Lorem Ipsum</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>30 min. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-x-circle text-danger"></i>
+                            <div>
+                                <h4>Atque rerum nesciunt</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>1 hr. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <div>
+                                <h4>Sit rerum fuga</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>2 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-info-circle text-primary"></i>
+                            <div>
+                                <h4>Dicta reprehenderit</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">Show all notifications</a>
+                        </li>
+
+                    </ul><!-- End Notification Dropdown Items -->
+
+                </li><!-- End Notification Nav -->
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span class="badge bg-success badge-number">3</span>
+                    </a><!-- End Messages Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                        <li class="dropdown-header">
+                            You have 3 new messages
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>Maria Hudson</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>4 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>Anna Nelson</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>6 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>David Muldon</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>8 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="#">Show all messages</a>
+                        </li>
+
+                    </ul><!-- End Messages Dropdown Items -->
+
+                </li><!-- End Messages Nav -->
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="{{url(Auth::user()->picture)}}" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->name}}</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>{{Auth::user()->name}}</h6>
+                            <span>{{Auth::user()->role_id}}</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('profile')}}">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Need Help?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out pull-right"></i>
                                         {{ __('Logout') }}
@@ -161,72 +267,247 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- /top navigation -->
+                        </li>
 
-            <!-- page content -->
-            <style>
-                .contenttop {
-                    margin-top: 50px;
-                }
-            </style>
-            <div class="right_col" role="main">
-                <div class="contenttop">
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+        
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url('admin/dashboard')}}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url('/admin/country')}}">
+                            <i class="bi bi-circle"></i><span>Country</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/admin/division')}}">
+                            <i class="bi bi-circle"></i><span>Division</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/admin/district')}}">
+                            <i class="bi bi-circle"></i><span>District</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/admin/upazila')}}">
+                            <i class="bi bi-circle"></i><span>Upazila</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/admin/union')}}">
+                            <i class="bi bi-circle"></i><span>Union</span>
+                        </a>
+                    </li>
                    
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 ">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    @yield('content_title')
-                                    
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                     @yield('content')
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   <!-- jQuery -->
-  <script src="{{ asset('public/admin/vendors/jquery/dist/jquery.min.js')}}"></script>
-  <!-- Bootstrap -->
-  <script src="{{ asset('public/admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <!-- FastClick -->
-  <script src="{{ asset('public/admin/vendors/fastclick/lib/fastclick.js')}}"></script>
-  <!-- NProgress -->
-  <script src="{{ asset('public/admin/vendors/nprogress/nprogress.js')}}"></script>
-  <!-- iCheck -->
-  <script src="{{ asset('public/admin/vendors/iCheck/icheck.min.js')}}"></script>
-  <!-- Datatables -->
-  <script src="{{ asset('public/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
-  <script src="{{ asset('public/admin./vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/jszip/dist/jszip.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
-  <script src="{{ asset('public/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
-<!-- bootstrap-daterangepicker -->
-    <script src="{{ asset('public/admin/vendors/moment/min/moment.min.js')}}"></script>
-    <script src="{{ asset('public/admin/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-  <!-- Custom Theme Scripts -->
-  <script src="{{ asset('public/admin/build/js/custom.min.js')}}"></script>
+                </ul>
+            </li><!-- End Components Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="forms-elements.html">
+                            <i class="bi bi-circle"></i><span>Form Elements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms-layouts.html">
+                            <i class="bi bi-circle"></i><span>Form Layouts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms-editors.html">
+                            <i class="bi bi-circle"></i><span>Form Editors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms-validation.html">
+                            <i class="bi bi-circle"></i><span>Form Validation</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Forms Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="tables-general.html">
+                            <i class="bi bi-circle"></i><span>General Tables</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tables-data.html">
+                            <i class="bi bi-circle"></i><span>Data Tables</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Tables Nav -->
+        
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="charts-chartjs.html">
+                            <i class="bi bi-circle"></i><span>Chart.js</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="charts-apexcharts.html">
+                            <i class="bi bi-circle"></i><span>ApexCharts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="charts-echarts.html">
+                            <i class="bi bi-circle"></i><span>ECharts</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Charts Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="icons-bootstrap.html">
+                            <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons-remix.html">
+                            <i class="bi bi-circle"></i><span>Remix Icons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons-boxicons.html">
+                            <i class="bi bi-circle"></i><span>Boxicons</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Icons Nav -->
+
+            <li class="nav-heading">Pages</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li><!-- End F.A.Q Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-contact.html">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-register.html">
+                    <i class="bi bi-card-list"></i>
+                    <span>Register</span>
+                </a>
+            </li><!-- End Register Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-login.html">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li><!-- End Login Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-error-404.html">
+                    <i class="bi bi-dash-circle"></i>
+                    <span>Error 404</span>
+                </a>
+            </li><!-- End Error 404 Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-blank.html">
+                    <i class="bi bi-file-earmark"></i>
+                    <span>Blank</span>
+                </a>
+            </li><!-- End Blank Page Nav -->
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <!--
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div>  -->
+
+        <section class="section dashboard">
+            @yield('content')
+        </section>
+
+    </main><!-- End #main -->
+
+   
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('public/admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/chart.js/chart.min.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/echarts/echarts.min.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/quill/quill.min.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/simple-datatables/simple-datatables.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{ asset('public/admin/vendor/php-email-form/validate.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ asset('public/admin/js/main.js')}}"></script>
+    <script src="{{ asset('public/admin-old/vendors/jquery/dist/jquery.min.js')}}"></script>
     <script>
         jQuery(document).ready(function(){
         jQuery('#country').change(function(){

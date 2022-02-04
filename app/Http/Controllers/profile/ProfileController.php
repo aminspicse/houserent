@@ -74,9 +74,23 @@ class ProfileController extends Controller
     {
         $data = User::find(Auth::user()->id);
 
-        if(!empty($request->profilepicture)){
+/*         if(!empty($request->profilepicture)){
             $filename = $request->profilepicture->store('public/image');
             $imagelink = substr($filename, 12);
+        }else{
+            $imagelink = Auth::user()->picture;
+        }
+ */
+        if($image = $request->file('profilepicture')) {
+
+            $destinationPath = 'image/';
+
+            $profileImage = $destinationPath.sha1(Auth::user()->email).date('YmdHis') . "." . $image->getClientOriginalExtension();
+
+            $image->move($destinationPath, $profileImage);
+
+            $imagelink = $profileImage;
+
         }else{
             $imagelink = Auth::user()->picture;
         }

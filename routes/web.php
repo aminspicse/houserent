@@ -109,3 +109,8 @@ Route::post('/getdivision', [AppsData::class,'getDivision']);
 Route::post('/getdistrict', [AppsData::class,'getDistrict']);
 Route::post('/getthana', [AppsData::class,'getThana']);
 Route::post('/getunion', [AppsData::class,'getUnion']);
+
+
+Route::get('/test',function(){
+	return view('layouts.layout');
+});

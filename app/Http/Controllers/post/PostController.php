@@ -81,8 +81,23 @@ class PostController extends Controller
             $price = $request->$price;
         }
 
-        $filename = $request->photo->store('public/image');
-        $imagelink = substr($filename, 12);
+        /* $filename = $request->photo->store('public/image');
+        $imagelink = substr($filename, 12); */
+
+        if($image = $request->file('photo')) {
+
+            $destinationPath = 'image/';
+
+            $profileImage = $destinationPath.sha1(Auth::user()->email).date('YmdHis') . "." . $image->getClientOriginalExtension();
+
+            $image->move($destinationPath, $profileImage);
+
+            $imagelink = $profileImage;
+
+        }else{
+            $imagelink = null;
+        }
+
         Post::create([
             'user_id'       => Auth::user()->id,
             'title'         => $request->title,
